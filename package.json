@@ -1,0 +1,23 @@
+{
+  "name": "node_release_manager",
+  "version": "1.0.0",
+  "description": "a release manager demo",
+  "main": "main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [
+    "demo",
+    "node",
+    "release manager"
+  ],
+  "author": "louis yu",
+  "license": "ISC",
+  "dependencies": {
+    "dateformat": "^3.0.3",
+    "md5": "^2.2.1",
+    "pine": "github:yeejlan/pine",
+    "pino": "^5.13.5"
+  },
+  "devDependencies": {}
+}

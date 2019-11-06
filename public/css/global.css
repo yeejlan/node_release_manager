@@ -1,0 +1,83 @@
+body {
+	padding: 60px 0 0;
+}
+
+.nav-username {
+	color: #049cdb;
+}
+
+.result {
+	margin-top: 2em;
+}
+.result iframe {
+	background: transparent none;
+	border: 0 none;
+	min-height: 400px;
+	width: 100%;
+}
+textarea{
+	resize:none;
+	width:99%;
+}
+.releaseOpt{
+	padding:0;
+	text-align:center;
+}
+.releaseOpt .control-group{
+	text-align:left;
+}
+.releaseOpt .btn{
+	margin-right:16px;
+}
+.btnRollback{
+	left:5px;
+	position:relative; 
+	top:-5px; 
+}
+.formSet textarea{
+	resize:none;
+	white-space:nowrap;
+}
+.formSet .control-label{
+	width:150px;
+}
+.siteList .btn{
+	margin-left:8px;
+}
+.paginationSet{
+	height:auto;
+	margin:0 0;
+}
+.paginationSet a{
+	padding:0 9px;
+	line-height:26px;
+}
+.logList{
+	overflow:hidden;
+}
+ .clearCacheMod{
+	 overflow:hidden;
+	 padding:20px 0 0 0;
+}
+.clearCacheMod .btn{
+	position:relative;
+	top:-20px;
+}
+.hidMessage{
+	height: 2px;
+	visibility:hidden;
+	width: 10px;
+}
+.form-horizontal .editusername{
+	font-size:16px;
+	line-height:28px;
+}
+.responseArea{
+	color:#F00;
+}
+#js_save{
+	display:none;
+}
+#js_orderOpt{
+	margin-bottom:-100px;
+}
