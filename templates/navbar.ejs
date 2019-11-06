@@ -9,11 +9,11 @@
 			<a class="brand" href="/">Release Manager</a>
 			<div class="nav-collapse">
 				<ul class="nav">
-					<li <%= currController == 'index' ? 'class="active"': '' %>><a href="/">Release</a></li>
-					<li <%= currController == 'log' ? 'class="active"': '' %>><a href="/log">Logs</a></li>
+					<li <%- currController == 'index' ? 'class="active"': '' %>><a href="/">Release</a></li>
+					<li <%- currController == 'log' ? 'class="active"': '' %>><a href="/log">Logs</a></li>
                     <!--<li class="divider-vertical"></li>-->
 					<% if(session['role'] == 'admin'){%>
-					<li class="dropdown <%= currController == 'siteconfig' ? 'class="active"': '' %>">
+					<li class="dropdown <%- currController == 'siteconfig' ? 'class="active"': '' %>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Config 
                         <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -22,7 +22,7 @@
                           <li><a href="/siteconfig/add">Add a site</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown <%= currController == 'admin' ? 'class="active"': '' %>">
+                    <li class="dropdown <%- currController == 'admin' ? 'class="active"': '' %>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin 
                         <b class="caret"></b></a>
                         <ul class="dropdown-menu">
