@@ -5,9 +5,9 @@ global.log = log;
 const pine = require('./pine');
 
 let app = new pine.App();
-global.app = app; 
+global.app = app;
 let router = new pine.Router(app);
-let server = new pine.Server(app, router);
+let server = new pine.Server(router);
 
 async function main(){
 
@@ -18,7 +18,7 @@ async function main(){
 
 	let controller = require('./controller');
 	router.setController(controller);
-	
+
 	server.serve()
 }
 

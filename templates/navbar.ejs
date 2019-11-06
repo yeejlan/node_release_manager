@@ -35,10 +35,10 @@
 				</ul>
 				<ul class="nav pull-right">
 					<li id="fat-menu" class="dropdown">
-						<% if(session['username']) { %>
+						<% if(session.get('username')) { %>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							Logged in as 
-							<em class="nav-username"><%=session['username']%></em> 
+							<em class="nav-username"><%=session.get('username')%></em> 
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">

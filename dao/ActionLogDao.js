@@ -25,16 +25,16 @@ class ActionLogDao {
 			optionSQL += " and  log_date = :log_date ";
 		}
 		if(nameFilter) {
-			optionSQL += " and  username like :username ";
+			optionSQL += " and  username = :username ";
 		}
 		let p = {
 			offset: offset,
 			pageSize: pageSize,
-			log_date: Utils.date(dateFilter),
+			log_date: dateFilter,
 			username: nameFilter
 		}
-
-		return await db.select(`select * from action_log $optionSQL order by id desc limit :offset , :pageSize`, p);
+		let sql = `select * from action_log ${optionSQL} order by id desc limit :offset , :pageSize`;
+		return await db.select(sql, p);
 	}
 
 	async getTotalCount(dateFilter, nameFilter) {
@@ -50,7 +50,7 @@ class ActionLogDao {
 			username: nameFilter
 		}
 
-		let row = await db.selectOne(`select count(*) as cnt from action_log $optionSQL`, p);
+		let row = await db.selectOne(`select count(*) as cnt from action_log ${optionSQL}`, p);
 		if(!row) {
 			return 0;
 		}
