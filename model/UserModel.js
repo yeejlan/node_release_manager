@@ -91,7 +91,7 @@ class UserModel {
 		if(userid < 1 || !password) {
 			return false;
 		}
-		let passwordMd5 = getPasswordMd5(password);
+		let passwordMd5 = this.getPasswordMd5(password);
 		return await userDao.updatePassword(userid, passwordMd5);
 	}
 

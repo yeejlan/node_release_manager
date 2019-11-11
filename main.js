@@ -19,7 +19,7 @@ async function main(){
 	let controller = require('./controller');
 	router.setController(controller);
 
-	server.serve()
+	server.serve();
 }
 
 main();
