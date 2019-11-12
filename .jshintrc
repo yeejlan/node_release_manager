@@ -4,5 +4,8 @@
   "node": true,
   "asi": true,
   "strict": true,
+  "sub": true,
+  "multistr": true,
+  "globals": {"app": true, "log": true},
   "esversion": 8
 }

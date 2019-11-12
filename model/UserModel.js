@@ -41,7 +41,7 @@ class UserModel {
 		}
 		if(pageRedirect) {
 			ctx.redirect('/');
-			ctx.exit;
+			ctx.exit();
 		}
 		return false;
 	}

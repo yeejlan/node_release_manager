@@ -1,1 +1,1 @@
-node . | pino-pretty
+jshint . && node . | pino-pretty

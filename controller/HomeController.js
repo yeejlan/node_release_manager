@@ -1,48 +1,57 @@
 "use strict";
 
-let {BaseController} = require('./BaseController')
-let {UserDao} = require('../dao/UserDao')
+const {BaseController} = require('./BaseController');
+const {UserModel} = require('../model/UserModel');
+const {SiteConfigModel} = require('../model/SiteConfigModel');
+const {ReleaseService} = require('../service/ReleaseService');
 
-let db = app.get('mysql.release_manager');
+let userModel = new UserModel();
+let siteConfigModel = new SiteConfigModel();
 
 class HomeController extends BaseController {
 
-    async before1() {
-        await super.before()
-        console.log("this is home.before() running")
-    }
+	async before() {
+		await super.before();
+		userModel.hasLoggedin(this.ctx, true);
 
-    async indexAction() {
-        return this.ctx.params
-        //return 'this is home/index page ' + this.ctx.params['a']
-    }
+		this.siteId = parseInt(this.ctx.params.siteId);
+		this.view.siteInfo = null;
+		this.view.siteId = this.siteId;
+		this.siteInfo = null;
+		if(this.siteId > 0) {
+			this.siteInfo = await siteConfigModel.getById(this.siteId);
+			this.view.siteInfo = this.siteInfo;
+		}		
+	}
 
-    async helloAction() {
-        return this.ctx.params
-    }    
+	async indexAction() {
+		let task = this.ctx.params.task || '';
+		let releaseType = this.ctx.params.releaseType || '';
+		let filterKeywords = this.ctx.params.keyWords;
 
-    async sessLoadAction() {
-    	return this.ctx.session.getStorage();
-    }
+		let frameLink = `src="/home/runCommand?siteId=${this.siteId}&task=${task}&releaseType=${releaseType}" `;
+		this.view.frameLink = frameLink;
+		this.view.releaseType = releaseType;
+		this.view.keyWords = filterKeywords;
 
-    async sessionSaveAction() {
-        let time = Math.round(new Date().getTime()/1000)
-    	this.ctx.session.set('time', time);
-        return time;
-    }
+		let sites = await siteConfigModel.list(0, 1000);
+		this.view.sites = sites;
 
-    async logAction() {
-    	return await db.select("select * from action_log where 1 limit 3");
-    }
+		return this.render("home/index");
+	}
 
-    async tplAction() {
-        this.ctx.exit();
-        return await this.ctx.render('/aaa')
-    }
+	async runCommandAction() {
+		let command = this.ctx.params.task;
+		let siteId = parseInt(this.ctx.params.siteId);
 
-    async errorAction() {
-        throw new Error("a test error")
-    }
+		let releasService = new ReleaseService();
+		return releasService.runCommand(this.ctx, siteId, command);
+	}
+
+	async helloAction() {
+		return 'hello '+ this.ctx.params.username;
+	}
+
 }
 
 exports.HomeController = HomeController;

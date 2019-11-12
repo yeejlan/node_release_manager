@@ -116,7 +116,7 @@ class SiteconfigController extends BaseController {
 
 		this.view.siteconfig = siteconfig;
 		this.view.errStr = err;
-		return render("siteconfig/edit");
+		return this.render("siteconfig/edit");
 	}
 
 	async deleteAction() {
