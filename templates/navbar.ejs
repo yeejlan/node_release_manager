@@ -12,7 +12,7 @@
 					<li <%- currController == 'index' ? 'class="active"': '' %>><a href="/">Release</a></li>
 					<li <%- currController == 'log' ? 'class="active"': '' %>><a href="/log">Logs</a></li>
                     <!--<li class="divider-vertical"></li>-->
-					<% if(session['role'] == 'admin'){%>
+					<% if(session.get('role') == 'admin'){%>
 					<li class="dropdown <%- currController == 'siteconfig' ? 'class="active"': '' %>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Config 
                         <b class="caret"></b></a>

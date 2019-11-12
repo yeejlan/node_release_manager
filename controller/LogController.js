@@ -12,7 +12,7 @@ let logModel = new LogModel();
 class LogController extends BaseController {
 	async before() {
 		await super.before();
-		//userModel.hasLoggedin(this.ctx, true);
+		userModel.hasLoggedin(this.ctx, true);
 	}
 
 	async indexAction() {

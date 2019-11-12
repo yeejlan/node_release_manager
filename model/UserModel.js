@@ -15,7 +15,7 @@ class UserModel {
 	}
 
 	currentRole(ctx) {
-		let role = ctx.session.get(role) || '';
+		let role = ctx.session.get('role') || '';
 		return role;
 	}
 
@@ -35,8 +35,8 @@ class UserModel {
 		return false;
 	}
 
-	isAdmin(pageRedirect) {
-		if(this.currentRole() == "admin") {
+	isAdmin(ctx, pageRedirect) {
+		if(this.currentRole(ctx) == "admin") {
 			return true;
 		}
 		if(pageRedirect) {
