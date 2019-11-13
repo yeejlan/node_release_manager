@@ -16,7 +16,7 @@ class BaseController {
 	}
 
 	async render(file) {
-		return await this.ctx.render(file, this.view);
+		return this.ctx.render(file, this.view);
 	}
 }
 
